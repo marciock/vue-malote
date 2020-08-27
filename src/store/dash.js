@@ -1,0 +1,27 @@
+export default{
+    namespaced:true,
+    state:{
+        menu:[
+            {
+                icon:'',
+                text:'Enivos',
+                path:'/envios'
+            },
+            {
+                icon:'',
+                text:'Recebimentos',
+                path:'/recebimentos'
+            },
+            {
+                icon:'',
+                text:'Cidades',
+                path:'/cidades'
+            },
+            {
+                icon:'',
+                text:'Perfil',
+                path:'/perfil'
+            }
+        ]
+    }
+}
