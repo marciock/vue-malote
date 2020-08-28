@@ -11,8 +11,10 @@ export default{
             nome:'',
             sobrenome:'',
             email:'',
-            senha:''
+            senha:'',
+            confirm:''
         },
+        
     },
     mutations:{
         mutLogin(state,loginAction){
@@ -25,6 +27,7 @@ export default{
     },
     
     actions:{
+        
         validateAction({commit},payload){
             const data=payload.data;
             const name=payload.name;
@@ -120,6 +123,7 @@ export default{
                         element.onblur=()=>{
                             element.blur();
                         }
+                        commit('mutValidate',status);
                     }
                     
                  break;
@@ -157,50 +161,132 @@ export default{
                          element.onblur=()=>{
                              element.blur();
                          }
+                         commit('mutValidate',status);
                      }
 
                     break;
 
-                    case 'email':
-                        if(data===''){
-                            // let element=document.getElementById(name);
-                             element.onblur=()=>{
-                                 element.focus();
-                                 
-                                } 
-                             status={message:'Campo está vazio',field:name,error:true}
-                             commit('mutValidate',status);
-                            // return false;
-                             status={};
-                             return true;
-                         }else{
-                             element.onblur=()=>{
-                                 element.blur();
-                             }
-                         }
-                         if(data.indexOf('@')==-1 ){
-                            // let element=document.getElementById(name);
-                             element.onblur=()=>{
-                                 element.focus();
-                                 
-                                } 
-                             console.log(data.indexOf('@'))
-                             status={message:'Formato do email incorreto',field:name,error:true}
-                             commit('mutValidate',status);
-                             // 
-                             
-                             return true;
-         
-                         }else{
-                             element.onblur=()=>{
-                                 element.blur();
-                                 
-                             }
-                             
-                             commit('mutValidate',status);
-                         }
+                case 'email':
+                    if(data===''){
+                        // let element=document.getElementById(name);
+                            element.onblur=()=>{
+                                element.focus();
+                                
+                            } 
+                            status={message:'Campo está vazio',field:name,error:true}
+                            commit('mutValidate',status);
+                        // return false;
+                            status={};
+                            return true;
+                        }else{
+                            element.onblur=()=>{
+                                element.blur();
+                            }
+                        }
+                        if(data.indexOf('@')==-1 ){
+                        // let element=document.getElementById(name);
+                            element.onblur=()=>{
+                                element.focus();
+                                
+                            } 
+                            console.log(data.indexOf('@'))
+                            status={message:'Formato do email incorreto',field:name,error:true}
+                            commit('mutValidate',status);
+                            // 
+                            
+                            return true;
+        
+                        }else{
+                            element.onblur=()=>{
+                                element.blur();
+                                
+                            }
+                            commit('mutValidate',status);
+                            
+                            
+                        }
 
-                    break;
+                break;
+                case 'senha':
+                    if(data===''){
+                    // let element=document.getElementById(name);
+                    element.onblur=()=>{
+                        element.focus();
+                        
+                        } 
+                    status={message:'Campo está vazio',field:name,error:true}
+                    commit('mutValidate',status);
+                    // return false;
+                    status={};
+                    return true;
+                }else{
+                    element.onblur=()=>{
+                        element.blur();
+                    }
+                    commit('mutValidate',status);
+                }
+
+                if(data.length < 6){
+                    //  let element=document.getElementById(name);
+                    element.onblur=()=>{
+                        element.focus();
+                        
+                        } 
+                    status={message:'Campo deve ter mais de 6 digitos',field:name,error:true}
+                    commit('mutValidate',status);
+                    // return false;
+                    status={};
+                    return true;
+
+                }else{
+                    element.onblur=()=>{
+                        element.blur();
+                    }
+                    commit('mutValidate',status);
+                }
+                break;
+                case 'confirm':
+
+                       
+                    if(data===''){
+                       // let element=document.getElementById(name);
+                        element.onblur=()=>{
+                            element.focus();
+                            
+                           } 
+                        status={message:'Campo está vazio',field:name,error:true}
+                        commit('mutValidate',status);
+                       // return false;
+                        status={};
+                        return true;
+                    }else{
+                        element.onblur=()=>{
+                            element.blur();
+                        }
+                    }
+                    //let pass=document.getElementById('senha');
+                    if(data!==document.getElementById('senha').value){
+                       
+                        element.onblur=()=>{
+                            element.focus();
+                            
+                           } 
+                        status={message:'Campo Senha não confere',field:name,error:true}
+                        commit('mutValidate',status);
+                       // return false;
+                        status={};
+                        return true;
+    
+                    }else{
+                        element.onblur=()=>{
+                            element.blur();
+                        }
+                        commit('mutValidate',status);
+                    }
+                    
+                 break;
+                    
+                
             
                 default :
                     break;
@@ -208,10 +294,7 @@ export default{
             }
             
                // commit('mutValidate',status);
-            
-            
-            
-            
+      
             
                  
         },
