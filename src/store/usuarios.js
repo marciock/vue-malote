@@ -11,6 +11,7 @@ export default{
             nome:'',
             sobrenome:'',
             email:'',
+            cidade:'',
             senha:'',
             confirm:''
         },
@@ -204,6 +205,28 @@ export default{
                             commit('mutValidate',status);
                             
                             
+                        }
+
+                break;
+                case 'cidade':
+
+                console.log(data)
+                
+                    if(data===''){
+                        // let element=document.getElementById(name);
+                            element.onblur=()=>{
+                                element.focus();
+                                
+                            } 
+                            status={message:'Campo está vazio',field:name,error:true}
+                            commit('mutValidate',status);
+                        // return false;
+                            status={};
+                            return true;
+                        }else{
+                            element.onblur=()=>{
+                                element.blur();
+                            }
                         }
 
                 break;
