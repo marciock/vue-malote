@@ -2,16 +2,18 @@
     <div class="container">
         <h2 class="text-center mt-5">Envio de Malote </h2>
         <div class="mt-5">
-            <NotaCorreio  title="Envio" />
+            <NotaMalote  title="Envio" />
         </div>
+        
     </div>
 </template>
 <script>
-import NotaCorreio from './NotaCorreio';
+import NotaMalote from './NotaMalote';
+
 export default {
     name:'Envio',
     components:{
-        NotaCorreio
+        NotaMalote
     }
 }
 </script>

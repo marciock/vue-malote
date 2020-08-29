@@ -52,7 +52,7 @@
              <div class="card-body border rounded" style="height:12em">
 
                  
-                <ButtonPlus />
+                <ButtonPlus  data-toggle="modal" data-target="#ModalEnvelope" />
                  
              </div>
              <div  class="card-footer">
@@ -73,7 +73,8 @@
                     <div class="col-sm-6 ">
                     
                         <div class="float-right "> 
-                            <button type="submit" class="btn btn-outline-success ">Salvar</button>
+                            <button type="submit" class="btn btn-outline-success " v-if="table.origem==='' && table.destino==='' && table.tipo===''" disabled>Salvar</button>
+                            <button type="submit" class="btn btn-outline-success " v-else>Salvar</button>
                             
                             
                             <button type="button" class="btn btn-outline-danger ml-2 ">Cancelar</button>
@@ -84,31 +85,23 @@
            
              </form>
         </div>
+       <ModalEnvelope />
     </div>
 </template>
 <script>
+import {mapState} from 'vuex';
+
 import ButtonPlus from '../widgets/ButtonPlus';
+import ModalEnvelope from '../widgets/ModalEnvelope';
 
 export default {
-    name:'NotaCorreio',
+    name:'NotaMalote',
     components:{
-        ButtonPlus
+        ButtonPlus,ModalEnvelope
     },
     props:['title'],
-    data:()=>{
-        return{
-            table:{
-                dataAtual: new Date().toLocaleDateString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-                nome:sessionStorage.getItem('nome'),
-                chave:sessionStorage.getItem('chave'),
-                origem:'',
-                destino:'',
-                tipo:'',
-                lacre:'',
-                nMalote:''
-            }
-            
-        }
+    computed:{
+        ...mapState('malotes',['table'])
     },
     methods:{
         getMalote(){

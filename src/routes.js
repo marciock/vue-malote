@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import {routes as usuarios} from './routes/usuarios';
-import {routes as correios} from './routes/correios';
+import {routes as malotes} from './routes/malotes';
 Vue.use(VueRouter);
 
 export default new VueRouter({
     routes:[
         ...usuarios,
-        ...correios,
+        ...malotes,
         {
             path:'/dash',
             name:'Dash',
