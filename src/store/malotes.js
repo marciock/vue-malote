@@ -10,8 +10,31 @@ export default{
             destino:'',
             tipo:'',
             lacre:'',
-            nMalote:''
+            nMalote:'',
+            protocolo:''
         },
+        
+    },
+    mutations:{
+        geraProtocolo(state){
+            let destino=state.table.destino;
+            let origem=state.table.origem;
+            let dataAtual=state.table.dataAtual;
+            let atual=dataAtual.replace('/','')
+            atual=atual.replace('/','')
+            let date=new Date();
+            let time=date.getTime();
+            if (destino !=='' && origem !=='' && dataAtual !==''){
+                let protocolo=destino+origem+atual+time;
+            state.table.protocolo=protocolo;
+             console.log(protocolo);
+            }
+            
+ 
+             
+         }
+    },
+    actions:{
         
     }
 }

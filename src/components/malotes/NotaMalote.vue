@@ -5,21 +5,6 @@
              <form>
             <div class="card-subtitle mb-2 text-muted">
                  <div class="row">
-                    
-                     <div class="form-group col-sm-2">
-                         <label for="origem">Origem</label>
-                         <select class="form-control" id="origem" v-model="table.origem">
-                             <option value="">------</option>
-                             <option value=""></option>
-                         </select>     
-                     </div>
-                     <div class="form-group col-sm-2">
-                         <label for="desctino">Destino</label>
-                         <select class="form-control" id="destino" v-model="table.destino">
-                             <option value="">------</option>
-                             <option value=""></option>
-                         </select>    
-                     </div>
                      <div class="form-group col-sm-2">
                          <label for="tipo">Tipo</label>
                          <select class="form-control" id="tipo" v-model="table.tipo" @change="getMalote()">
@@ -40,10 +25,21 @@
                                  
                      </div>
                      <div class="form-group col-sm-2">
-                         <label for="protocolo">Protocolo</label>
-                         <input class="form-control" id="protocolo" type="text"   readonly>
-                                 
+                         <label for="origem">Origem</label>
+                         <select class="form-control" id="origem" v-model="table.origem">
+                             <option value="">------</option>
+                             <option value="2">teste</option>
+                         </select>     
                      </div>
+                     <div class="form-group col-sm-2">
+                         <label for="desctino">Destino</label>
+                         <select class="form-control" id="destino" v-model="table.destino" @change="geraProtocolo()">
+                             <option value="">------</option>
+                             <option value="3">TEste</option>
+                         </select>    
+                     </div>
+                    
+                     
 
                     
                  </div>
@@ -52,7 +48,8 @@
              <div class="card-body border rounded" style="height:12em">
 
                  
-                <ButtonPlus  data-toggle="modal" data-target="#ModalEnvelope" />
+                <ButtonPlus   v-if="table.protocolo===''" />
+                <ButtonPlus  data-toggle="modal" data-target="#ModalEnvelope" v-else />
                  
              </div>
              <div  class="card-footer">
@@ -70,14 +67,19 @@
                          <label for="Chave">Chave</label>
                          <input class="form-control" id="chave" type="text" v-model="table.chave" readonly >    
                      </div>
-                    <div class="col-sm-6 ">
+                     <div class="form-group col-sm-3">
+                         <label for="protocolo">Protocolo</label>
+                         <input class="form-control" id="protocolo" type="text" readonly v-model="table.protocolo">
+                                 
+                     </div>
+                    <div class="col-sm-2 ">
                     
                         <div class="float-right "> 
-                            <button type="submit" class="btn btn-outline-success " v-if="table.origem==='' && table.destino==='' && table.tipo===''" disabled>Salvar</button>
-                            <button type="submit" class="btn btn-outline-success " v-else>Salvar</button>
+                            <button type="submit" class="btn btn-outline-success "  v-if="table.tipo=='' || table.protocolo==''" disabled><span class="fa fa-save"></span></button>
+                            <button type="submit" class="btn btn-outline-success " v-else><span class="fa fa-save"></span></button>
                             
                             
-                            <button type="button" class="btn btn-outline-danger ml-2 ">Cancelar</button>
+                            <button type="button" class="btn btn-outline-danger ml-2 "><span class="fa fa-remove"></span></button>
                         </div>
                     </div>
                 </div>
@@ -90,6 +92,7 @@
 </template>
 <script>
 import {mapState} from 'vuex';
+import {mapMutations} from 'vuex';
 
 import ButtonPlus from '../widgets/ButtonPlus';
 import ModalEnvelope from '../widgets/ModalEnvelope';
@@ -121,7 +124,8 @@ export default {
                 nMalote.setAttribute('readonly',true)
             }
             
-        }
+        },
+        ...mapMutations('malotes',['geraProtocolo'])
     }
 }
 </script>
