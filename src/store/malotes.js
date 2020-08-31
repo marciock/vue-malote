@@ -29,7 +29,7 @@ export default{
             state.table.protocolo=protocolo;
              console.log(protocolo);
             }
-            
+                               
  
              
          }
