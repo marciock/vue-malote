@@ -1,3 +1,4 @@
+import Vue from 'vue';
 export default{
     namespaced:true,
     state:{
@@ -13,6 +14,7 @@ export default{
             nMalote:'',
             protocolo:''
         },
+        envelopes:[]
         
     },
     mutations:{
@@ -32,9 +34,17 @@ export default{
                                
  
              
+         },
+         mutListEnvelope(state,listEnvelope){
+             state.envelopes=listEnvelope
          }
     },
     actions:{
-        
+        listEnvelope: async ({commit},payload)=>{
+            const data= await payload;
+
+            let results= await Vue.http.get('show_cidades',{params:{data}});
+            commit('mutListEnvelope',results.data);
+        }
     }
 }
