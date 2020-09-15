@@ -5,6 +5,8 @@ import usuarios from './store/usuarios';
 import dash from './store/dash';
 import malotes from './store/malotes';
 import cidades from './store/cidades';
+import bases from './store/bases';
+import buttonGen from './store/buttonGen';
 
 Vue.use(Vuex);
 
@@ -13,6 +15,8 @@ export default new Vuex.Store({
         usuarios,
         dash,
         malotes,
-        cidades
+        cidades,
+        bases,
+        buttonGen
     }
 })

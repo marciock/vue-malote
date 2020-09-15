@@ -1,21 +1,18 @@
 <template>
     
         <div class="float-right mr-5 mb-5">
-            <button type="button" class="btn btn-success rounded-circle " @click="setClick()">
+            <router-link :to="link" class="btn btn-success rounded-circle " >
                 <span class="fa fa-plus"></span>
-            </button> 
+            </router-link> 
         </div>
         
     
 </template>
 <script>
+
 export default {
     name:'ButtonPlus',
-    props:['click'],
-    methods:{
-        setClick(){
-            return this.click;
-        }
-    }
+    props:['link']
+    
 }
 </script>

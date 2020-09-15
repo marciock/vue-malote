@@ -4,6 +4,11 @@ export default [
         name:'AddCidades',
         component:()=>import('@/components/cidades/AddCidades')
     },
+    {
+        path:'/cidades',
+        name:'ViewCidades',
+        component:()=>import('@/components/cidades/ViewCidades')
+    }
     
 
 ]
