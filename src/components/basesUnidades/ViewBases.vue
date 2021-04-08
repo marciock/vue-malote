@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="container mt-5">
+        <h3>Unidades/Bases</h3>
         <TableView :heads="head" :bodies="bases" :fields="fields" editURL="bases_edit" editForm="/edit_bases"/> 
         <ButtonPlus link="/add_bases" />
     </div>
