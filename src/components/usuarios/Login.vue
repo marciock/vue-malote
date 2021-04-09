@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div class="container ">
         <form >
-       <div class="row mt-5 row-left">
+       <div class="row justify-content-center row-top ">
            <div class="col-sm-10">
             <div class="card shadow p-3 mb-5 bg-white rounded" >
                 <div class="card-body">
@@ -13,15 +13,15 @@
                             <small id="chaveHelp" class="form-text text-muted" v-if="this.users.field==='chave'">{{this.users.text}}</small>
                            
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="senha">Senha</label>
                             <input type="password" id="senha"  class="form-control" v-model="schema.senha" aria-describedby="senhadHelp">
                             <small id="senhadHelp" class="form-text text-muted" v-if="this.users.field==='senha'">{{this.users.text}}</small>
                         </div>
                     </div>
-                    <div class="form-group float-right">
-                        <router-link to="/add_user" class="card-link">Cadastrar</router-link>
-                        <button type="submit" class="btn btn-outline-success ml-3"  >Entrar</button>
+                    <div class=" float-end mt-5">
+                        <router-link to="/add_user" class="card-link  ">Cadastrar</router-link>
+                        <button type="submit" class="btn btn-outline-success  btn-right"  >Entrar</button>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,10 @@ export default {
 }
 </script>
 <style scoped>
-.row-left{
-    margin-left: 10em;
+.btn-right{
+    margin-left: 1em;
+}
+.row-top{
+    margin-top:10em;
 }
 </style>

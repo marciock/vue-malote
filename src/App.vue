@@ -6,10 +6,11 @@
 
 <script>
 import 'bootstrap/dist/css/bootstrap.css';
-
-import 'popper.js';
-import 'bootstrap/dist/js/bootstrap';
 import 'font-awesome/css/font-awesome.css'
+
+import '@popperjs/core/dist/umd/popper.js'
+import 'bootstrap/dist/js/bootstrap';
+
 
 
 export default {

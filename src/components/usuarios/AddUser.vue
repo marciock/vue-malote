@@ -1,10 +1,10 @@
 <template>
-    <div class="container mt-2">
-        <div class="row row-left">
+    <div class="container">
+        <div class=" justify-content-center row-top">
             <div class="col-sm-8">
                 <form @submit.prevent="save()" >
                 <h4>Novo Usuário</h4>
-                <div class="row">
+                <div class="row mt-5">
                     <div class="form-group col-sm-4">
                         <label for="chave" >Chave</label>
                         <input type="text" id="chave"  class="form-control" v-model="schema.chave"  maxlength="8" 
@@ -55,7 +55,7 @@
                         @keydown.tab="validation(schema.confirm,'confirm')" @click="validation(schema.confirm,'confirm')" >
                          <small id="chavedHelp" class="form-text text-muted" v-if="validate.field==='confirm'"  >{{validate.message}}</small>
                     </div>
-                    <div class="form-group float-right">
+                    <div class=" float-end mt-5">
                         <router-link to="/" class="btn btn-outline-danger">Cancelar</router-link>
                         <button type="submit" class="btn btn-outline-success ml-3" 
                         v-if="schema.chave==='' 
@@ -117,8 +117,8 @@ export default {
 
 </script>
 <style>
-    .row-left{
-        margin-left: 10em;
+    .row-top{
+        margin-top: 10em;
 
 }
 </style>
